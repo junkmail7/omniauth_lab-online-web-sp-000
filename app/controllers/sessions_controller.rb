@@ -1,3 +1,5 @@
+require 'pry'
+
 class SessionsController < ApplicationController
   # This is required because of a quirk the "developer" authentication
   # strategy. We'll remove this when we move to a "real" provider.
@@ -14,6 +16,7 @@ class SessionsController < ApplicationController
     # We're going to save the authentication information in the session
     # for demonstration purposes. We want to keep this data somewhere so that,
     # after redirect, we have access to the returned data
+    binding.pry
     session[:name] = request.env['omniauth.auth']['info']['name']
     session[:omniauth_data] = request.env['omniauth.auth']
 
